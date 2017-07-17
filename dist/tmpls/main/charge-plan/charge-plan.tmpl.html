@@ -1,0 +1,121 @@
+<div>
+    <div class="row margin-top-md">
+        <h4 class="col-md-2 col-md-offset-1">计费方案</h4>
+        <div class="col-md-2 col-md-offset-5">
+            <button class="btn btn-info" ng-click="actions.open({method:'add'})">新建方案</button>
+        </div>
+        <div class="col-md-2 col-md-offset-8"></div>
+    </div>
+    <div class="padding-md">
+        <table class="table table-hover text-center table-striped table-bordered">
+            <thead>
+            <tr>
+                <th style="text-align: center;">方案名称</th>
+                <th style="text-align: center;">计费类型</th>
+                <th style="text-align: center;">计费方式</th>
+                <th style="text-align: center;">收费单价</th>
+                <th style="text-align: center;">赠送时长</th>
+                <th style="text-align: center;">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr ng-repeat="plan in data.list">
+                <td ng-bind="plan.name"></td>
+                <td ng-bind="plan.chargingType | planChargingTypeFilter"></td>
+                <td ng-bind="plan.chargingAccountType | chargingAccountTypeFilter"></td>
+                <td ng-bind="plan.unitPrice | unitPriceFilter:plan.chargingType"></td>
+                <td ng-bind="plan.freeTime | chargingListTimeFilter:plan.chargingType"></td>
+                <td>
+                    <a href="javascript:;"
+                       ng-click="actions.open({method:'edit',item:plan,index:data.list.indexOf(plan)})">
+                        <i class="fa fa-edit"></i>
+                        修改
+                    </a>
+                    |
+                    <a href="javascript:;" ng-click="actions.deletePlan(plan)">
+                        <i class="fa fa-trash-o"></i>
+                        删除
+                    </a>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div style="text-align: center">
+        <ul style="margin: 0 auto" uib-pagination ng-change="pager.pageChanged()" first-text="首页" last-text="尾页"
+            next-text="下一页" previous-text="上一页" total-items="pager.totalItems" ng-model="pager.currentPage"
+            max-size="pager.maxSize" class="pagination-sm" boundary-links="true" force-ellipses="true" items-per-page="10" ></ul>
+    </div>
+
+
+    <!--新建、编辑 modal组件-->
+    <script type="text/ng-template" id="editModal.html">
+        <form name="editModalForm">
+            <div class="modal-header">
+                <h3 class="modal-title" ng-bind="title"></h3>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <div class="form-group">
+                    <label>方案名称</label>
+                    <input class="form-control" placeholder="请输入方案名称" ng-model="item.name" required>
+                </div>
+                <div class="form-group">
+                    <label>计费类型</label>
+                    <div>
+                        <select class="form-control" ng-model="item.chargingType">
+                            <option ng-repeat="list in chargingTypeList" value="{{list.value}}">{{list.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>计费方式</label>
+                    <div>
+                        <select class="form-control" ng-model="item.chargingAccountType">
+                            <option value="1">按会议室计费</option>
+                            <option value="2">按机构计费</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>收费单价(单位:<span ng-bind="item.chargingType | chargingUnitFilter"></span>)</label>
+                    <div class="row">
+                        <input type="number" class="form-control col-xs-2" placeholder="请输入收费单价" ng-model="item.unitPrice" required>
+                    </div>
+                   
+                </div>
+                <div class="form-group" ng-show="item.chargingType != '4'">
+                    <label class="">赠送时长(单位:<span ng-bind="item.chargingType | chargingTimeFilter"></span>)</label>
+                    <div class="row">
+                        <input type="number" class="form-control" placeholder="请输入赠送时长" ng-model="item.freeTime" required>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="item.chargingType == '1'">
+                    <label class="">赠送时长有效期(单位: 天)</label>
+                    <div class="row" style="display: flex; align-items: center;">
+                        <input style="width: 65%; margin-right: 20px;" type="number" class="form-control" placeholder="请输入有效期" min="0" ng-model="item.validPeriod" required>
+                        <span>注：0为永久有效</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer ">
+                <button class="btn btn-info" type="button" ng-click="confirm()">完成</button>
+                <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+            </div>
+        </form>
+        
+    </script>
+
+    <!--普通确认弹窗 组件-->
+    <script type="text/ng-template" id="oneMessageModal.html">
+        <div class="padding-md" style="margin-top: 20px">
+            <h4 class="modal-title text-center">确认删除这个方案吗？</h4>
+        </div>
+        <div class="text-center">
+            <button class="margin-md btn btn-info" type="button" ng-click="confirm()">确认</button>
+            <button class="margin-md btn btn-warning" type="button" ng-click="cancel()">取消</button>
+        </div>
+    </script>
+</div>

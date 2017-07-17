@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h3>并发信息</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-6">
+        <div class="input-group">
+            <span class="input-group-addon">客户选择：</span>
+            <select class="form-control" ng-model="data.orgid">
+                <option value="0">全部</option>
+                <option ng-repeat="org in data.orgs" value="{{org.id}}">{{org.name}}</option>
+            </select>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-xs-1">
+        <span style="font-size: 15px;line-height: 35px;">时间选择：</span>
+    </div>
+    <div class="col-xs-3">
+        <button class="btn btn-info" ng-click='actions.setTimeTo(1)'>昨天</button>
+        <button class="btn btn-info" ng-click='actions.setTimeTo(7)'>7天</button>
+        <button class="btn btn-info" ng-click='actions.setTimeTo(30)'>30天</button>
+    </div>
+    <div class="col-xs-2" style="padding-right:5px">
+        <p class="input-group">
+            <input type="text" class="form-control" uib-datepicker-popup="yyyy-MM-dd" ng-model="data.startTime"
+                   is-open="data.startTimeOpened"
+                   datepicker-options="dateOptions" ng-required="true" current-text="今天" clear-text="清除" close-text="关闭"
+                   alt-input-formats="yyyy-mm-dd"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="data.startTimeOpened=!data.startTimeOpened">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                </button>
+            </span>
+        </p>
+    </div>
+    <div style="float:left;line-height:35px;">到</div>
+    <div class="col-xs-2" style="padding-left:5px">
+        <p class="input-group">
+            <input type="text" class="form-control" uib-datepicker-popup="yyyy-MM-dd" ng-model="data.endTime"
+                   is-open="data.endTimeOpened"
+                   datepicker-options="dateOptions" ng-required="true" current-text="今天" clear-text="清除" close-text="关闭"
+                   alt-input-formats="yyyy-MM-dd"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="data.endTimeOpened=!data.endTimeOpened">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                </button>
+            </span>
+        </p>
+    </div>
+    <div class="col-xs-2">
+        <button class="btn btn-default pull-right" ng-click="actions.download()">导出原始数据</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div id="graph" style="width: 1024px;height: 600px;border: 1px solid cadetblue;">
+
+        </div>
+    </div>
+</div>

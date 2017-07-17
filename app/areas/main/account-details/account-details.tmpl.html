@@ -1,0 +1,61 @@
+<div>
+    <div class="row margin-top-md">
+        <h4 class="col-md-2 col-md-offset-1">计费明细</h4>
+        <div class="col-md-6 col-md-offset-2 text-right ">
+            <a href="javascript:;" class="btn btn-warning" ui-sref="main.charge-account({
+                page:data.params.page,
+                searchMeetingRoomNum:data.params.searchMeetingRoomNum,
+                organname:data.params.organname})">
+                <i class="fa fa-chevron-left"></i>
+                返回
+            </a>
+        </div>
+        <div class="col-md-2 col-md-offset-8"></div>
+    </div>
+    <div class="padding-md" style="height: 70px">
+        <div class="col-md-12 text-left" style="line-height: 24px;padding-left: 100px;">
+            <div class="col-md-4">计费账号:<span style="margin-left:10px;" ng-bind="data.params.accountId"></span></div>
+            <div class="col-md-4">计费方案:<span style="margin-left:10px;" ng-bind="data.params.chargingType | chargingTypeFilter"></span></div>
+            <div class="col-md-4">会议室号:<span style="margin-left:10px;" ng-bind="data.params.meetingRoomNum"></span></div>
+        </div>
+        <div class="col-md-12 text-left" style="line-height: 24px;padding-left: 100px;">
+            <div class="col-md-4">所属渠道:<span style="margin-left:10px;" ng-bind="data.params.orgName"></span></div>
+            <div class="col-md-4">计费类型:<span style="margin-left:10px;" ng-bind="data.params.schemeName"></span></div>
+            <div class="col-md-4">剩余时长:<span style="margin-left:10px;" ng-bind="data.params.remainTime | durationFilter"></span></div>
+        </div>
+    </div>
+    <div class="padding-md">
+        <table class="table table-hover text-center table-striped table-bordered">
+            <thead>
+            <tr>
+                <th style="text-align: center;">会议室号</th>
+                <th style="text-align: center;">时间</th>
+                <th style="text-align: center;">类型</th>
+                <th style="text-align: center;">时长</th>
+                <th style="text-align: center;">剩余</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr ng-repeat="details in data.list">
+                <td ng-if="details.meetingRoomNum" ng-bind="details.meetingRoomNum"></td>
+                <td ng-if="!details.meetingRoomNum" ng-bind="'----'"></td>
+                <td ng-bind="details.time | formatTimeFilter"></td>
+                <td ng-if="details.type === 1" ng-bind="'通话'"></td>
+                <td ng-if="details.type === 2" ng-bind="'充值'"></td>
+                <td ng-if="details.type === 3" ng-bind="'赠送'"></td>
+                <td ng-if="details.type === 4" ng-bind="'失效'"></td>
+                <td ng-if="details.type === 1 || details.type === 4">{{'-'+(details.duration | detailsDurationFilter)}}</td>
+                <td ng-if="details.type === 2 || details.type === 3" ng-bind="details.duration | detailsDurationFilter"></td>
+                <td ng-bind="details.remainTime | detailsDurationFilter"></td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div style="text-align: center">
+        <ul style="margin: 0 auto" uib-pagination ng-change="pager.pageChanged()" first-text="首页" last-text="尾页"
+            next-text="下一页" previous-text="上一页" total-items="pager.totalItems" ng-model="pager.currentPage"
+            max-size="pager.maxSize" class="pagination-sm" boundary-links="true" force-ellipses="true" items-per-page="10"></ul>
+    </div>
+</div>

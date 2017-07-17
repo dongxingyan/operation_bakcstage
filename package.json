@@ -1,0 +1,41 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^13.1.1",
+    "gulp": "^3.9.1",
+    "gulp-asset-rev": "0.0.15",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-less": "^3.1.0",
+    "gulp-ng-annotate": "^2.0.0",
+    "gulp-rev": "^7.1.2",
+    "gulp-rev-collector": "^1.1.1",
+    "gulp-sourcemaps": "^2.2.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-webserver": "^0.9.1",
+    "liftoff": "^2.3.0",
+    "run-sequence": "^1.2.2",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-animate": "^1.5.8",
+    "angular-local-storage": "^0.5.0",
+    "angular-ui-bootstrap": "^2.2.0",
+    "angular-ui-router": "^0.3.1",
+    "bootstrap": "^3.3.7",
+    "echarts": "^3.3.2",
+    "jquery": "^3.1.1",
+    "liftoff": "^2.3.0"
+  }
+}

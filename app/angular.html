@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>charge</title>
+    <link rel="stylesheet" href="css/index2.css">
+    <link rel="stylesheet" href="css/use-count.css">
+
+    <!--angular css-->
+    <link href="./libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./res/styles/bundle.css" rel="stylesheet">
+    <style>
+        /*.head,
+        .box,
+        .head-content {
+            width: 100%;
+        }
+        .box-left {
+            position: relative;
+            z-index: 1;
+        }
+        .box-right {
+            position: absolute;
+            padding-left: 170px;
+            height: 637px;
+            background: #fff;
+            width: 100%;
+        }*/
+    </style>
+</head>
+<body>
+<div class="head">
+    <div class="head-content">
+        <h1 class="left" style="margin: -4px 0 0 0"><img src="image/logo.png" alt=""></h1>
+    </div>
+</div>
+<div class="box">
+    <div class="box-left">
+        <a href="javascript:void(0)" class="a1">
+            <div>
+                <img src="image/page01.png" alt="">
+                状态总览
+                <span></span>
+            </div>
+        </a>
+        <a href="javascript:void(0)" class="a2">
+            <div>
+                <img src="image/page02.png" alt="">
+                机构管理<span></span></div>
+        </a>
+        <a href="javascript:void(0)" class="a3">
+            <div>
+                <img src="image/page03.png" alt="">
+                会议室管理<span></span></div>
+        </a>
+        <a href="javascript:void(0)" class="a4">
+            <div>
+                <img src="image/page04.png" alt="">
+                用户账号<span></span></div>
+        </a>
+        <a href="javascript:void(0)" class="a-end">
+            <div class="charge-plan" >
+                <img src="image/charge-plan.png" alt="">
+                计费方案<span></span>
+            </div>
+            <div class="charge-combo" >
+                <img src="image/charge-combo.png" alt="">
+                计费套餐<span></span>
+            </div>
+            <div class="charge-account">
+                <img src="image/charge-account.png" alt="">
+                计费账号<span></span>
+            </div>
+            <div class="count">
+                <img src="image/charge-account.png" alt="">
+                统计<span></span>
+            </div>
+            <div class="use-count hide">
+                使用统计<span></span>
+            </div>
+            <div class="live-count hide">
+                直播统计<span></span>
+            </div>
+            <div class="statistics-concurrent">
+                <img src="image/charge-account.png" alt="">
+                并发信息 <span></span>
+            </div>
+        </a>
+        <a href="javascript:void(0)" class="a5">
+            <div>
+                <img src="image/page05.png" alt="">
+                设备账号<span></span></div>
+        </a>
+        <a href="javascript:void(0)" class="a7">
+            <div>
+                <img src="image/page07.png" alt="">
+                退出<span></span></div>
+        </a>
+    </div>
+    <div class="box-right">
+        <div ui-view></div>
+    </div>
+</div>
+<script src="./libs/jquery/dist/jquery.js"></script>
+<!--原项目-->
+<!--<script src="js/jquery.min.js"></script>-->
+<script src="js/vars.js"></script>
+<script src="js/comment.js"></script>
+<script src="js/angularCommon.js"></script>
+<!--angular-->
+<!--<script src="./libs/jquery/dist/jquery.js"></script>-->
+<script src="./libs/bootstrap/dist/js/bootstrap.js"></script>
+<script src="./libs/angular/angular.js"></script>
+<script src="./libs/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="./libs/angular-animate/angular-animate.js"></script>
+<script src="./libs/angular-local-storage/dist/angular-local-storage.js"></script>
+<script src="./libs/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+<script src="./bundle.js"></script>
+</body>
+</html>

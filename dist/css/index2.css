@@ -1,0 +1,999 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.box {
+    width: 1440px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.box-left {
+    float: left;
+    width: 170px;
+    background: #445e77;
+}
+
+a {
+    text-decoration: none;
+}
+
+#contentBox li {
+}
+
+.box-left div {
+    height: 65px;
+    line-height: 65px;
+    padding-left: 30px;
+    position: relative;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: '微软雅黑';
+    font-size: 16px;
+    z-index: 0;
+    border-bottom: 1px solid rgb(110, 129, 146);
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.box-left div img {
+    position: absolute;
+    left: 15px;
+    top: 17px;
+    width: 30px;
+}
+
+.box-left div span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #253b52;
+    opacity: 1.2;
+    z-index: -1;
+    display: none;
+}
+
+.head {
+    width: 1440px;
+    background: #ededed;
+    height: 77px;
+    margin: 0 auto;
+}
+
+.head-content {
+    width: 1440px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    height: 70px;
+    padding-top: 18px;
+}
+
+.box-right {
+    position: relative;
+    float: left;
+    min-height: 637px;
+    background: #fff;
+    width: 1268px;
+}
+
+.right-title {
+    height: 60px;
+    line-height: 60px;
+    font-family: "微软雅黑";
+    font-size: 18px;
+    color: #646464;
+    text-indent: 16px;
+    border-bottom: 1px solid #31a3dd;
+    position: relative;
+    overflow: hidden;
+}
+
+.content-boxes ul:nth-child(even) {
+    height: 50px;
+    line-height: 50px;
+    background: #ededed;
+}
+
+.content-boxes ul:nth-child(odd) {
+    height: 50px;
+    line-height: 50px;
+    background: #fff;
+
+}
+
+.right-box {
+    padding-top: 30px;
+    padding-left: 30px;
+    overflow: hidden;
+}
+
+.right-box div {
+    float: left;
+    width: 280px;
+    height: 170px;
+    padding-right: 60px;
+    text-align: right;
+    line-height: 170px;
+    position: relative;
+    background: #ff8d67;
+    color: #fff;
+    margin-right: 20px;
+    font-size: 55px;
+    cursor: pointer;
+}
+
+.right-box .status-meetingroom {
+    background: #f6b262;
+}
+
+.right-box .status-user {
+    background: #4dc7e3;
+}
+
+.right-box .status-device {
+    background: #63d369;
+    margin-top: 30px;
+}
+
+.right-box img {
+    position: absolute;
+    left: 60px;
+    top: 25px;
+}
+
+.title-left {
+    float: left;
+    width: 200px;
+    text-align: left;
+    font-size: 18px;
+}
+
+.title-right {
+    float: right;
+}
+
+.title-right span {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    font-size: 13px;
+    margin-right: 20px;
+}
+
+.title4 {
+    height: 30px;
+    line-height: 30px;
+    width: 100px;
+    margin-right: 40px;
+}
+
+.title2, .title22 {
+    height: 26px;
+    margin-right: 40px;
+    line-height: 26px;
+    width: 100px;
+}
+
+.title5 {
+    width: 90px;
+    height: 30px;
+    line-height: 30px;
+    background: url(../image/chaxun.png) no-repeat 0px 0px;
+    cursor: pointer;
+}
+
+.title-right .title6 {
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+    background: url(../image/xinjian.png) no-repeat 0px 0px;
+    margin-right: 0px;
+    line-height: 30px;
+}
+
+.title-right .title7 {
+    width: 90px;
+    height: 30px;
+    cursor: pointer;
+    background: url(../image/xinjianjigou.png) no-repeat 0px 0px;
+    margin-right: 0px;
+    line-height: 30px;
+}
+
+.title-right .title8 {
+    width: 90px;
+    height: 30px;
+    cursor: pointer;
+    background: url(../image/new-user.png) no-repeat 0px 0px;
+    margin-right: 0px;
+    line-height: 30px;
+}
+
+.title-right .title9 {
+    width: 90px;
+    height: 30px;
+    cursor: pointer;
+    background: url(../image/new-device.png) no-repeat 0px 0px;
+    margin-right: 0px;
+    line-height: 30px;
+}
+
+.user-content {
+    padding: 10px;
+    height: 640px;
+    position: relative;
+}
+
+.pages {
+    position: absolute;
+    bottom: 30px;
+    width: 550px;
+    left: 50%;
+    margin-left: -260px;
+    font-family: "微软雅黑";
+    font-size: 13px;
+}
+
+.current-page, .page-count, .content-totals {
+    color: red;
+}
+
+#firstPage, #prev, #next, #page-jump, #lastPage {
+    cursor: pointer;
+    border: 1px solid #c4c4c4;
+    padding: 3px;
+    color: #646464;
+}
+
+.cant-click {
+    color: #969696;
+    background: #eeeeee;
+}
+
+#firstPage {
+    margin-left: 10px;
+}
+
+.page-num {
+    padding: 3px;
+    width: 28px;
+    margin-left: 20px;
+}
+
+.content-box {
+    height: 100%;
+    width: 100%;
+}
+
+.content-box div:first-child {
+    background: #31a3dd;
+    color: #fff;
+}
+
+.content-box div {
+    height: 40px;
+    line-height: 40px;
+}
+
+.li-head-meetingroom, .li-head-org {
+    overflow: hidden;
+}
+
+ul {
+    list-style: none;
+}
+
+.li-head-meetingroom li, .li-head-meetingrooms li {
+    /*width: 171px;*/
+    float: left;
+    font-family: '微软雅黑';
+    font-size: 13px;
+    text-align: left;
+    height: 40px;
+}
+
+#meetingroom-name {
+    width: 392px;
+}
+
+.meetingroom-number {
+    width: 92px;
+}
+
+.meetingroom-people {
+    width: 89px;
+}
+
+.meetingroom-org {
+    width: 430px
+}
+
+.meetingroom-data {
+    width: 116px;
+}
+
+.description {
+    width: 112px;
+}
+
+.meetingroom-name11 {
+    width: 456px;
+}
+
+.meetingroom-number11 {
+    width: 348px;
+}
+
+.meetingroom-people11 {
+    width: 169px;
+}
+
+.meetingroom-org11 {
+    width: 90px
+}
+
+.meetingroom-data11 {
+    width: 92px;
+}
+
+.description11 {
+    width: 88px;
+}
+
+.li-head-org li, .li-head-orgs li {
+    float: left;
+    font-family: '微软雅黑';
+    font-size: 13px;
+    text-align: left;
+    height: 40px;
+}
+
+.org-name {
+    width: 680px;
+    text-indent: 30px;
+}
+.plan-list{
+    width: 150px;
+}
+
+.org-id {
+    width: 158px;
+}
+
+.org-password {
+    width: 152px;
+}
+
+.description1 {
+    width: 88px;
+}
+
+.content-box .li-head-meetingroom li:first-child, .content-box .li-head-meetingrooms li:first-child {
+    text-indent: 15px;
+}
+
+.description img {
+    margin-left: 25px;
+    cursor: pointer;
+    margin-top: 18px;
+}
+
+.description img:first-child {
+    margin-left: 0px;
+}
+
+.bcgs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #253b52;
+    opacity: 0.5;
+    display: none;
+}
+
+.meetingroom-form, .editor-form, .other-name {
+    width: 350px;
+    z-index: 999;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    margin-left: -180px;
+    margin-top: -360px;
+    font-size: 13px;
+    font-family: ' 微软雅黑';
+    display: none;
+    padding: 10px 20px;
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+.add-user {
+    width: 350px;
+    z-index: 999;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    margin-left: -180px;
+    margin-top: -200px;
+    font-size: 13px;
+    font-family: ' 微软雅黑';
+    display: none;
+    padding: 10px 20px;
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+    height: 530px;
+}
+
+.add-user .form-box div:last-child {
+    margin-top: 11px;
+}
+
+.add-org, .editor-org {
+    width: 450px;
+    z-index: 999;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    margin-left: -180px;
+    height: 520px;
+    margin-top: -200px;
+    font-size: 13px;
+    font-family: ' 微软雅黑';
+    display: block;
+    padding: 10px 20px;
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+    display: none;
+}
+
+.editor-user {
+    width: 350px;
+    z-index: 999;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    margin-left: -180px;
+    height: 540px;
+    margin-top: -200px;
+    font-size: 13px;
+    font-family: ' 微软雅黑';
+    padding: 10px 20px;
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+    display: none;
+}
+
+.editor-user div:last-child {
+    margin-top: 0px;
+}
+
+.add-org span, .editor-org span {
+    text-align: left;
+    text-indent: 20px;
+}
+
+.add-org .true, .add-org .cancel, .editor-org .true, .editor-org .cancel, .editor-org .true3 {
+    text-align: center;
+    text-indent: 0px;
+}
+
+.add-org textarea, .editor-org textarea {
+    width: 180px;
+    margin-left: 1px;
+}
+
+.editors {
+    border-bottom: 1px solid black;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+}
+
+.editor-user textarea {
+    width: 180px;
+    margin-left: 1px;
+}
+
+.editors2 {
+    border-bottom: 1px solid black;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.other-head {
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    text-align: center;
+    color: rgb(49, 163, 221);
+}
+
+.editors span {
+    display: inline-block;
+    width: 120px;
+    text-align: center;
+    height: 40px;
+    cursor: pointer;
+
+}
+
+.editor-left {
+    margin-left: 46px;
+}
+
+.form-box, .form-box2 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.form-box div {
+    margin-top: 7px;
+}
+
+.editor-user .form-box div {
+    margin-top: 13px;
+    height: 20px;
+}
+
+.editor-user .form-box .positions {
+    height: 160px;
+}
+
+.form-box2 div {
+    margin-top: 6px;
+}
+
+.form-box span, .form-box2 span {
+    display: inline-block;
+    width: 120px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    float: left;
+}
+
+.form-box .user-org, .form-box #user-a1, .form-box #user-a2, .form-box #user-a3 {
+    text-align: left;
+}
+
+.form-box input, .form-box select, .form-box2 input, .form-box2 select {
+    height: 24px;
+    width: 171px;
+    outline: none;
+}
+
+.add-bgc {
+    background: url(../image/xing.png) no-repeat 9px 9px;
+}
+
+.form-box .checkbox, .form-box2 .checkbox {
+    width: 150px;
+}
+
+.label1, .label3, .label5, .label9, .label7 {
+    background: url(../image/checkgray.png) no-repeat 0px 3px;
+    display: inline-block;
+    width: 45px;
+    height: 30px;
+    text-indent: 24px;
+    line-height: 30px;
+
+}
+
+.label2, .label4, .label6, .label10, .label8, .labels1, .labels2, .labels3, .labels4, .labels5, .labels6, .labels7, .labels8 {
+    background: url(../image/checkgray.png) no-repeat 0px 3px;
+    display: inline-block;
+    width: 45px;
+    height: 30px;
+    text-indent: 24px;
+    line-height: 30px;
+}
+
+#radio1, #radio2, #radio3, #radio4, #radio5, #radio6, #radio9, #radio10, #radio8, #radio7, #radios1, #radios2, #radios3, #radios4, #radios5, #radios6, #radios7, #radios8, #radio-edit-join-yes, #radio-edit-join-no {
+    display: none;
+}
+
+#radio1:checked + label, #radio2:checked + label {
+    background: url(../image/checkblue.png) no-repeat 0px 3px;
+}
+
+#radios1:checked + label, #radios2:checked + label {
+    background: url(../image/checkblue.png) no-repeat 0px 3px;
+}
+
+#radio3:checked + label, #radio4:checked + label {
+    background: url(../image/checkblue.png) no-repeat 0px 3px;
+}
+
+#radios3:checked + label, #radios4:checked + label {
+    background: url(../image/checkblue.png) no-repeat 0px 3px;
+}
+
+#radio5:checked + label, #radio6:checked + label {
+    background: url(../image/checkblue.png) no-repeat 0px 3px;
+}
+
+#radios5:checked + label, #radios6:checked + label {
+    background: url(../image/checkblue.png) no-repeat 0px 3px;
+}
+
+#radio7:checked + label, #radio8:checked + label {
+    background: url(../image/checkblue.png) no-repeat 0px 3px;
+}
+
+#radios7:checked + label, #radios8:checked + label {
+    background: url(../image/checkblue.png) no-repeat 0px 3px;
+}
+
+#radio9:checked + label, #radio10:checked + label {
+    background: url(../image/checkblue.png) no-repeat 0px 3px;
+}
+
+.true, .trues, .tianjia, .true3 {
+    position: relative;
+    top: 32px;
+    display: inline-block;
+    width: 100px;
+    height: 20px;
+    color: rgb(255, 255, 255);
+    font-family: '微软雅黑';
+    line-height: 20px;
+    left: 41px;
+    cursor: pointer;
+    background: rgb(49, 163, 221);
+    border-radius: 4px;
+}
+
+.form-box2 .trues {
+    top: 21px;
+}
+
+.form-box2 .change-code {
+    display: inline-block;
+    width: 70px;
+    height: 30px;
+    color: rgb(255, 255, 255);
+    font-family: '微软雅黑';
+    line-height: 30px;
+    cursor: pointer;
+    background: rgb(49, 163, 221);
+    border-radius: 4px;
+    outline: none;
+    border: 0;
+}
+
+.cancel, .cancels, .cancels1 {
+    position: relative;
+    top: 32px;
+    right: -76px;
+    display: inline-block;
+    width: 100px;
+    height: 20px;
+    color: rgb(255, 255, 255);
+    font-family: '微软雅黑';
+    line-height: 20px;
+    cursor: pointer;
+    background: rgb(49, 163, 221);
+    border-radius: 4px;
+}
+
+.form-box2 .cancels {
+    top: 21px;
+}
+
+.positions {
+    overflow: hidden;
+}
+
+.positions div {
+    float: left;
+    width: 120px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+
+}
+
+.form-box2 textarea {
+    /*    position: absolute;
+        left: 70px;*/
+    overflow: auto;
+    width: 171px;
+    height: 100px;
+    margin-left: 1px;
+}
+
+.change-click {
+    color: #31a3dd;
+    border-bottom: 2px solid #31a3dd;
+}
+
+.other-box {
+    width: 350px;
+    margin: 0 auto;
+    height: 282px;
+    border-left: 1px solid #c4c4c4;
+    border-right: 1px solid #c4c4c4;
+    border-bottom: 1px solid #c4c4c4;
+    overflow: auto;
+
+}
+
+.other-heads {
+    background: rgb(49, 163, 221);
+    height: 40px;
+    line-height: 40px;
+    overflow: hidden;
+}
+
+.other-left {
+    float: left;
+    height: 40px;
+    width: 155px;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+}
+
+.other-right {
+    float: left;
+    height: 40px;
+    width: 175px;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+}
+
+.name-box ul {
+    list-style: none;
+    overflow: hidden;
+}
+
+.name-box {
+    height: 40px;
+    line-height: 40px;
+    background: #f0f0f0;
+    border-bottom: 1px solid #c4c4c4;
+}
+
+.name-box ul li {
+    float: left;
+    text-align: center;
+    width: 166px;
+}
+
+.name-editorimg {
+    margin-right: 8px;
+    margin-top: 12px;
+}
+
+.othername-input {
+    width: 350px;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
+.othername-input span {
+    display: inline-block;
+    width: 80px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+}
+
+.othername-input input {
+    height: 24px;
+    width: 259px;
+}
+
+.othername-input {
+    overflow: hidden;
+}
+
+.othername-input div {
+    float: left;
+    width: 80px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+
+}
+
+.othername-input textarea {
+    /*    position: absolute;
+        left: 70px;*/
+    width: 260px;
+    height: 100px;
+    margin-left: 3px;
+}
+
+.othername-input .tianjia {
+    top: 25px;
+    left: 85px;
+}
+
+.othername-input .cancels1 {
+    top: 25px;
+    left: 180px;
+}
+
+.alerts, .alerts-delet, .alerts-add, .page {
+    width: 300px;
+    height: 210px;
+    position: absolute;
+    margin-left: -150px;
+    margin-top: -105px;
+    left: 50%;
+    top: 30%;
+    background: #fff;
+    border-radius: 5px;
+    display: none;
+    z-index: 999;
+}
+
+.alert-head {
+    height: 40px;
+    background: #31a3dd;
+    line-height: 40px;
+    text-indent: 35px;
+    color: #ffffff;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    position: relative;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.img-right, .delet-right, .add-right, .page-right {
+    position: absolute;
+    right: 6px;
+    top: 8px;
+    height: 25px;
+}
+
+.img-left {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    height: 21px;
+}
+.hide {
+    display: none;
+}
+.alert-content {
+    height: 110px;
+    line-height: 110px;
+    text-align: center;
+    font-family: "微软雅黑";
+    font-size: 12px;
+
+}
+
+.alert-bottom span {
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
+    height: 20px;
+    line-height: 20px;
+    width: 80px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.alert-sure, .delet-sure, .add-sure, .page-sure {
+    background: #31a3dd;
+    color: #fff;
+
+}
+
+.alert-bottom {
+    text-align: center;
+}
+
+.span-total {
+    width: 200px;
+    margin: 0 auto;
+}
+
+.alert-cancel, .delet-cancel {
+    background: #969696;
+    color: #fff;
+}
+
+.form-box .otherspan {
+    width: auto;
+
+}
+
+.form-box .othername {
+    overflow: hidden;
+}
+
+.form-box .othername-left {
+    width: 98px;
+    float: left;
+    margin-top: 0px;
+    text-align: center;
+}
+
+.form-box .othername-right {
+    float: left;
+    width: 210px;
+    margin-top: 0px;
+}
+
+.form-box2 .change-background {
+    background: gray;
+    outline: none;
+}
+
+#orgSelect {
+    width: 110px;
+    height: 25px;
+    margin-right: 64px;
+}
+
+.form-box2 div:first-child {
+    margin-top: 25px;
+}
+
+.editor-users {
+    height: 518px;
+}
+
+/*.form-box .bgc-lefts{
+    text-align: right;
+   margin-right: 20px;
+}*/
+.description1 img:last-child {
+    margin-left: 15px;
+}
+
+.description11 img:last-child {
+    margin-left: 15px;
+}
+
+.description1 img, .description11 img {
+    cursor: pointer;
+}
+
+/*------------------------------*/
+/*
+GlassTea
+date: 2016-12-14
+*/
+
+#changepassYes:checked + label, #changepassNo:checked + label {
+    background: url(../image/checkblue.png) no-repeat 0px 3px;
+}
+
+
+#changepass-yes-edit:checked + label, #changepass-no-edit:checked + label {
+    background: url(../image/checkblue.png) no-repeat 0px 3px;
+}
+
+#radio_isAutoChangeYes:checked + label, 
+#radio_isAutoChangeNo:checked + label, 
+#radio_isAutoChangeYesMulti:checked + label, 
+#radio_isAutoChangeNoMulti:checked + label, 
+#radio_isAutoChangeYesEdit:checked + label, 
+#radio_isAutoChangeNoEdit:checked + label,
+#radio-edit-join-yes:checked + label,
+#radio-edit-join-no:checked + label {
+    background: url(../image/checkblue.png) no-repeat 0px 3px;
+}
+
+
+/*------------------------------*/

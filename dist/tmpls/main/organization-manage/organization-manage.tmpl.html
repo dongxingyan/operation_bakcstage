@@ -1,0 +1,64 @@
+<div>
+    <div class="row margin-top-md">
+        <h4 class="col-md-2 col-md-offset-1">机构管理</h4>
+        <div class="col-md-7 col-md-offset-1">
+            <form class="form-inline col-md-6" role="form">
+                    机构名称:
+                <input type="email" class="form-control" id="fromAddress" placeholder="请输入所属渠道">
+                <button type="submit" class="btn btn-info">搜索</button>
+            </form>
+            <button type="submit" class="btn btn-info col-md-2 col-md-offset-2" data-toggle="modal" data-target="#newOrganizationManage">新建机构</button>
+        </div>
+        <div class="col-md-2 col-md-offset-8"></div>
+    </div>
+    <div class="padding-md">
+        <table class="table table-hover text-center table-striped table-bordered">
+            <thead>
+            <tr>
+                <th style="text-align: center;">机构名称</th>
+                <th style="text-align: center;">计费方案</th>
+                <th style="text-align: center;">管理员账号</th>
+                <th style="text-align: center;">密码</th>
+                <th style="text-align: center;">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr ng-repeat="orgList in data.list">
+                <td ng-bind="orgList.name"></td>
+                <td ng-bind="orgList.chargePlan">王可可</td>
+                <td ng-bind="orgList.orgManagerName">13520850857</td>
+                <td ng-bind="orgList.orgManagerPassword">pc-申请专家方案</td>
+                <td>
+                    <a href="#" class="">
+                        <i class="fa fa-edit"></i>
+                        编辑
+                    </a>
+                    |
+                    <a href="#" class="">
+                        <i class="fa fa-trash-o"></i>
+                        删除
+                    </a>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal fade" id="newOrganizationManage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">{{data.modal.title}}</h4>
+                </div>
+                <div class="modal-body">{{data.modal.msg}}</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-info" data-dismiss="modal">完成</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

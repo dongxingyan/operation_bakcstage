@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>状态总览</title>
+    <link rel="stylesheet" href="css/index2.css">
+    <script src="js/vars.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/comment.js"></script>
+</head>
+<body>
+<div class="head">
+    <div class="head-content">
+        <h1 class="left"><img src="image/logo.png" alt=""></h1>
+    </div>
+</div>
+<div class="box">
+    <div class="box-left">
+        <a href="javascript:void(0)" class="a1">
+            <div>
+                <img src="image/page01.png" alt="">
+                状态总览
+                <span class="show" style="display:block">
+				</span>
+            </div>
+        </a>
+        <a href="javascript:void(0)" class="a2">
+            <div>
+                <img src="image/page02.png" alt="">
+                机构管理<span></span></div>
+        </a>
+        <a href="javascript:void(0)" class="a3">
+            <div>
+                <img src="image/page03.png" alt="">
+                会议室管理<span></span></div>
+        </a>
+        <a href="javascript:void(0)" class="a4">
+            <div>
+                <img src="image/page04.png" alt="">
+                用户账号<span></span></div>
+        </a>
+        <a href="javascript:void(0)" class="a-end">
+            <div class="charge-plan">
+                <img src="image/charge-plan.png" alt="">
+                计费方案<span></span>
+            </div>
+            <div class="charge-combo" >
+                <img src="image/charge-combo.png" alt="">
+                计费套餐<span></span>
+            </div>
+            <div class="charge-account">
+                <img src="image/charge-account.png" alt="">
+                计费账号<span></span>
+            </div>
+            <div class="count">
+                <img src="image/charge-account.png" alt="">
+                统计<span></span>
+            </div>
+            <div class="use-count hide">
+                使用统计<span></span>
+            </div>
+            <div class="live-count hide">
+                直播统计<span></span>
+            </div>
+            <div class="statistics-concurrent">
+                <img src="image/charge-account.png" alt="">
+                并发信息 <span></span>
+            </div>
+        </a>
+        <a href="javascript:void(0)" class="a5">
+            <div>
+                <img src="image/page05.png" alt="">
+                设备账号<span></span></div>
+        </a>
+        <a href="javascript:void(0)" class="a7">
+            <div>
+                <img src="image/page07.png" alt="">
+                退出<span></span></div>
+        </a>
+    </div>
+    <div class="box-right">
+        <div class="right-title">状态总览</div>
+        <div class="right-box">
+            <div class="status-org">
+                <span></span>
+                <img src="image/org.png" alt="">
+            </div>
+            <div class="status-meetingroom">
+                <span></span>
+                <img src="image/meetingroom.png" alt="">
+            </div>
+            <div class="status-user">
+                <span></span>
+                <img src="image/user.png" alt="">
+            </div>
+            <div class="status-device">
+                <span></span>
+                <img src="image/device.png" alt="">
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    function GetRequest() {
+        var url = location.search; //获取url中"?"符后的字串
+
+        var theRequest = new Object();
+
+        if (url.indexOf("?") != -1) {
+
+            var str = url.substr(1);
+
+            strs = str.split("&");
+
+            for (var i = 0; i < strs.length; i++) {
+
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+
+            }
+
+        }
+
+        return theRequest;
+
+    }
+    var Request = new Object();
+
+    Request = GetRequest();
+    var admin_token = Request.token;
+    var lefts = $(".box-left a")
+    var a = lefts.length
+    for (var i = 0; i < a; i++) {
+        lefts.eq(i).click(function () {
+            if ($(this).hasClass('a7')) {
+                location.href = '../login.html';
+            }
+            else if ($(this).hasClass('a1')) {
+                location.href = 'status.html?token=' + admin_token;
+            }
+            else if ($(this).hasClass('a2')) {
+                location.href = 'org-management.html?token=' + admin_token;
+            }
+            else if ($(this).hasClass('a3')) {
+                location.href = 'meetingroom-management.html?token=' + admin_token;
+            }
+            else if ($(this).hasClass('a4')) {
+                location.href = 'user-management.html?token=' + admin_token;
+            }
+            else if ($(this).hasClass('a5')) {
+                location.href = 'device-management.html?token=' + admin_token;
+            }
+        })
+    }
+
+    //移除事件 并重新绑定
+    var _endArg = $('.a-end');
+    _endArg.unbind('click');
+    _endArg.on('click', 'div', function (event) {
+        event.preventDefault;
+        if ($(this).hasClass('charge-plan')) {
+            //计费方案页面
+            var target = location.href = 'angular.html?name=' + admin_token + '#!/main/charge-plan';
+
+            console.log(target);
+        }
+        else if ($(this).hasClass('charge-combo')) {
+            //计费套餐页面
+            var target = location.href = 'angular.html?name=' + admin_token + '#!/main/charge-combo';
+            console.log(target);
+        }
+        else if ($(this).hasClass('charge-account')) {
+            //计费账号页面
+            var target = location.href = 'angular.html?name=' + admin_token + '#!/main/charge-account';
+            console.log(target);
+        }
+        else if ($(this).hasClass('count')) {
+            var $useCount = $('.use-count');
+            var $liveCount = $('.live-count');
+
+            if ($useCount.hasClass('hide')) {
+                $useCount.removeClass('hide');
+            } else {
+                $useCount.addClass('hide');
+            }
+
+            if ($liveCount.hasClass('hide')) {
+                $liveCount.removeClass('hide');
+            } else {
+                $liveCount.addClass('hide');
+            }
+        }
+        else if ($(this).hasClass('use-count')) {
+            window.location.href = "./angular.html?name=" +admin_token + "#!/main/use-count";
+        }
+        else if ($(this).hasClass('statistics-concurrent')) {
+            // 统计信息页面
+            location.href = 'angular.html?name=' + admin_token + '#!/main/statistics-concurrent';
+        }
+    })
+
+    $(".status-org").click(function () {
+        location.href = 'org-management.html?token=' + admin_token;
+    })
+    $(".status-meetingroom").click(function () {
+        location.href = 'meetingroom-management.html?token=' + admin_token;
+    })
+    $(".status-user").click(function () {
+        location.href = 'user-management.html?token=' + admin_token;
+    })
+    $(".status-device").click(function () {
+        location.href = 'device-management.html?token=' + admin_token;
+    })
+    $.getJSON(url + 'cloudpServer/v1/orgs/?token=' + admin_token, function (data) {
+        $(".status-org span").html(data.data.length)
+    })
+    $.getJSON(url + 'cloudpServer/v1/orgs/vmrs/?token=' + admin_token, function (data) {
+        $(".status-meetingroom span").html(data.data.length)
+    })
+    $.getJSON(url + 'cloudpServer/v1/orgs/users?token=' + admin_token, function (data) {
+        $(".status-user span").html(data.data.length)
+    })
+    $.getJSON(url + 'cloudpServer/v1/orgs/devices/?token=' + admin_token, function (data) {
+        $(".status-device span").html(data.data.length)
+    })
+</script>
+</body>
+</html>

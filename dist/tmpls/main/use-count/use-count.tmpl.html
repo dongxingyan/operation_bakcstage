@@ -1,0 +1,98 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h3>使用统计</h3>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-xs-3">
+        <button class="btn btn-info" ng-class="{'btn-selected': data.isSelectedOfWeek}" ng-click='actions.clickOfNearlyWeek()'>近一周</button>
+        <button class="btn btn-info" ng-class="{'btn-selected': data.isSelectedOfMonth}" ng-click='actions.getOneMonthData()'>近一月</button>
+        <button class="btn btn-info" ng-class="{'btn-selected': data.isSelectedOfYear}" ng-click='actions.getOneYearData()'>近一年</button>
+    </div>
+    <div class="col-xs-2" style="padding-right:5px">
+        <p class="input-group">
+            <input type="text" class="form-control" uib-datepicker-popup="yyyy-MM-dd" ng-model="data.startTime"
+                   is-open="data.startTimeOpened"
+                   datepicker-options="dateOptions" ng-required="true" current-text="今天" clear-text="清除" close-text="关闭"
+                   alt-input-formats="yyyy-mm-dd"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="data.startTimeOpened=!data.startTimeOpened">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                </button>
+            </span>
+        </p>
+    </div>
+    <div style="float:left;line-height:35px;">到</div>
+    <div class="col-xs-2" style="padding-left:5px">
+        <p class="input-group">
+            <input type="text" class="form-control" uib-datepicker-popup="yyyy-MM-dd" ng-model="data.endTime"
+                   is-open="data.endTimeOpened"
+                   datepicker-options="dateOptions" ng-required="true" current-text="今天" clear-text="清除" close-text="关闭"
+                   alt-input-formats="yyyy-mm-dd"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="data.endTimeOpened=!data.endTimeOpened">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                </button>
+            </span>
+        </p>
+    </div>
+    <div class="col-xs-2">
+        <input type="text" placeholder="多个机构请用，隔开" style="height: 34px;width: 180px;" ng-model="data.organization">
+    </div>
+    <div class="col-xs-1">
+        <button class="btn btn-info" ng-click="actions.searchCountData(data.startTime, data.endTime, data.organization)">搜索</button>
+    </div>
+    <div class="col-xs-1">
+        <button class="btn btn-default pull-right" ng-click="actions.download()">导出报表</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-9" style="float: left;border: 1px solid #ccc; margin-left: 15px; padding: 10px;">
+        <div id="meeting-use-times" style="width: 100%; height: 280px;"></div>
+    </div>
+    <div style="width: 23%;height: 303px;position: absolute;right: 0;border: 1px solid #ccc;overflow-y: auto;">
+        <table style="text-align: center; width: 88%; margin-top: 10px;">
+            <tr style="line-height: 25px; font-weight: bold;">
+                <td>机构</td>
+                <td>次数</td>
+            </tr>
+            <tr ng-repeat="item in data.meetingTimesData">
+                <td>{{item.orgName}}</td>
+                <td>{{item.orgCount}}</td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-9" style="float: left;border: 1px solid #ccc; margin-left: 15px; padding: 10px; margin-top: 15px;">
+        <div id="meeting-concurrent" style="width: 100%; height: 280px;"></div>
+    </div>
+    <div style="width: 23%;height: 303px;position: absolute;right: 0;border: 1px solid #ccc; overflow-y: auto;margin-top: 15px;">
+        <table style="text-align: center; width: 88%;">
+            <tr style="line-height: 25px; font-weight: bold; margin-top: 10px;">
+                <td>机构</td>
+                <td>并发</td>
+            </tr>
+            <tr ng-repeat="item in data.concurrentData">
+                <td>{{item.orgName}}</td>
+                <td>{{item.simultaneous}}</td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12" style="float: left;border: 1px solid #ccc; margin-left: 15px; padding: 10px; margin-top: 15px;">
+        <div id="meeting-times" style="width: 96%; height: 280px;"></div>
+    </div>
+</div>
+<div id="J-warn-modal" class="warn-info-tip-modal hide">
+    <div class="warn-type-container hide">
+        <img src="./image/error.png" alt="">
+        <span id="J-warn-tip-text"></span>
+    </div>
+</div>

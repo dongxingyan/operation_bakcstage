@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>设备管理</title>
+    <link rel="stylesheet" href="css/index2.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vars.js"></script>
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/devicemanagement.js"></script>
+    <script src="js/comment.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-slide.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-timepicker-addon.js"></script>
+</head>
+<style>
+    .ui-timepicker-div dl dt {
+        height: 25px;
+        margin-bottom: -25px;
+    }
+
+    .ui_tpicker_time_label {
+        padding-left: 20px;
+    }
+
+    .ui-timepicker-div dl dd {
+        margin: 0 10px 10px 65px;
+    }
+
+    .ztree li span.button.ico_docu {
+        background: url(image/personal.png) no-repeat 0px 0px;
+    }
+</style>
+<body>
+<div class="head">
+    <div class="head-content">
+        <h1 class="left"><img src="image/logo.png" alt=""></h1>
+    </div>
+</div>
+<div class="box">
+    <div class="box-left">
+        <a href="javascript:void(0)" class="a1">
+            <div>
+                <img src="image/page01.png" alt="">
+                状态总览
+                <span>
+				</span>
+            </div>
+        </a>
+        <a href="javascript:void(0)" class="a2">
+            <div>
+                <img src="image/page02.png" alt="">
+                机构管理<span></span></div>
+        </a>
+        <a href="javascript:void(0)" class="a3">
+            <div>
+                <img src="image/page03.png" alt="">
+                会议室管理<span></span></div>
+        </a>
+        <a href="javascript:void(0)" class="a4">
+            <div>
+                <img src="image/page04.png" alt="">
+                用户账号<span></span></div>
+        </a>
+        <a href="javascript:void(0)" class="a-end">
+            <div class="charge-plan">
+                <img src="image/charge-plan.png" alt="">
+                计费方案<span></span>
+            </div>
+            <div class="charge-combo">
+                <img src="image/charge-combo.png" alt="">
+                计费套餐<span></span>
+            </div>
+            <div class="charge-account">
+                <img src="image/charge-account.png" alt="">
+                计费账号<span></span>
+            </div>
+            <div class="count">
+                <img src="image/charge-account.png" alt="">
+                统计<span></span>
+            </div>
+            <div class="use-count hide">
+                使用统计<span></span>
+            </div>
+            <div class="live-count hide">
+                直播统计<span></span>
+            </div>
+            <div class="statistics-concurrent">
+                <img src="image/charge-account.png" alt="">
+                并发信息 <span></span>
+            </div>
+        </a>
+        <a href="javascript:void(0)" class="a5">
+            <div>
+                <img src="image/page05.png" alt="">
+                设备账号<span class="show" style="display:block"></span></div>
+        </a>
+        <a href="javascript:void(0)" class="a7">
+            <div>
+                <img src="image/page07.png" alt="">
+                退出<span></span></div>
+        </a>
+    </div>
+    <div class="box-right">
+        <div class="right-title">
+            <div class="title-left">设备账号管理</div>
+            <div class="title-right">
+                <span class="title3">设备别名</span>
+                <input type="text" class="title22">
+                <span class="title1">所属机构</span>
+                <select name="" id="orgSelect" class="title2">
+                    <option value="">无</option>
+                </select>
+                <span class="title5">&nbsp</span>
+                <span class="title9">&nbsp</span>
+            </div>
+        </div>
+        <div class="user-content">
+            <div class="content-box">
+                <div class="ceshi">
+                    <ul class="li-head-meetingroom">
+                        <li style="width:456px">所属机构</li>
+                        <li style="width:348px">设备名称</li>
+                        <li style="width:169px">设备别名</li>
+                        <li style="width:90px">绑定账号</li>
+                        <li style="width:92px">绑定密码</li>
+                        <li style="width:88px">操作</li>
+                    </ul>
+                </div>
+                <div class="content-boxes" id="contentBox">
+                    <ul class="li-head-meetingrooms">
+                        <li class="meetingroom-name11">你好</li>
+                        <li class="meetingroom-number11">65456465</li>
+                        <li class="meetingroom-people11">111</li>
+                        <li class="meetingroom-org11">鹏博士集团</li>
+                        <li class="meetingroom-data11">2016-04-01</li>
+                        <li class="description11">
+                            <img src="image/description2.png" alt="">
+                            <img src="image/description3.png" alt="">
+                        </li>
+                    </ul>
+                </div>
+                <div class="pages">
+                    <span>第<span class="current-page"></span>页/</span>
+                    <span>共<span class="page-count"></span>页,</span>
+                    <span>共<span class="content-totals"></span>条</span>
+                    <span id="firstPage">首页</span>
+                    <span id="prev">上一页</span>
+                    <span id="next">下一页</span>
+                    <span id="lastPage">尾页</span>
+                    <input type="text" class="page-num">
+                    <span id="page-jump">跳转</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page">
+    <div class="alert-head">
+        温馨提示
+        <img src="image/alertshanchu.png" alt="" class="page-right">
+        <img src="image/zhuyi.png" alt="" class="img-left">
+    </div>
+    <div class="alert-content"></div>
+    <div class="alert-bottom">
+        <span class="page-sure">确定</span>
+    </div>
+</div>
+<div class="alerts-delet">
+    <div class="alert-head">
+        温馨提示
+        <img src="image/alertshanchu.png" alt="" class="delet-right">
+        <img src="image/zhuyi.png" alt="" class="img-left">
+    </div>
+    <div class="alert-content">确定删除吗？</div>
+    <div class="alert-bottom">
+        <div class="span-total">
+            <span class="delet-sure">确定</span>
+            <span class="delet-cancel">取消</span>
+        </div>
+    </div>
+</div>
+<div class="alerts">
+    <div class="alert-head">
+        温馨提示
+        <img src="image/alertshanchu.png" alt="" class="img-right">
+        <img src="image/zhuyi.png" alt="" class="img-left">
+    </div>
+    <div class="alert-content"></div>
+    <div class="alert-bottom">
+        <span class="alert-sure">确定</span>
+    </div>
+</div>
+<div class="editor-user editor-users">
+    <div class="editors2">编辑设备</div>
+    <div class="form-box">
+        <div>
+            <span class="bgc-lefts">所属机构:</span>
+            <select name="" id="user-org"></select>
+        </div>
+        <div>
+            <span class="bgc-lefts">设备名称:</span>
+            <span class="a1" id="user-a1"></span>
+        </div>
+        <div>
+            <span class="bgc-lefts">设备别名:</span>
+            <span class="a2" id="user-a2"></span>
+        </div>
+        <div>
+            <span class="bgc-lefts">开始时间:</span>
+            <span class="a2" id="user-start" style="text-align:left"></span>
+        </div>
+        <div>
+            <span class="bgc-lefts">截止日期:</span>
+            <input type="text" id="datatime9" placeholder="点击获取截止日期">
+        </div>
+        <div>
+            <span class="bgc-lefts">绑定账号:</span>
+            <span class="a3" id="user-a3"></span>
+        </div>
+        <div>
+            <span class="add-bgc">绑定密码:</span>
+            <input type="text" class="a4" id="user-a4">
+        </div>
+        <div class="positions" style="height:160px;">
+            <div>pexip描述:</div>
+            <textarea cols="30" rows="10" class="a66"></textarea>
+
+        </div>
+        <div>
+            <span class="true3">确定</span>
+            <span class="cancel">取消</span>
+        </div>
+    </div>
+</div>
+<div class="bcgs"></div>
+<div class="add-user">
+    <div class="editors">
+        <span class="editor-left">新建设备</span>
+        <span class="editor-right">批量创建</span>
+    </div>
+    <div class="form-box" style="display:none">
+        <div>
+            <span class="add-bgc">所属机构:</span>
+            <select name="" id="orgCreatSelect"></select>
+        </div>
+        <div>
+            <span class="add-bgc">设备名称:</span>
+            <input type="text" placeholder="请输入设备名称" class="device-other">
+        </div>
+        <div>
+            <span class="add-bgc">设备别名:</span>
+            <input type="text" placeholder="请输入设备别名" class="device-other1">
+        </div>
+        <div>
+            <span class="add-bgc">开始时间</span>
+            <input type="text" id="datatime6">
+        </div>
+        <div>
+            <span class="add-bgc">过期时间</span>
+            <input type="text" id="datatime3">
+        </div>
+        <div>
+            <span class="add-bgc">绑定账号</span>
+            <input type="text" class="pexip1">
+        </div>
+        <div>
+            <span class="add-bgc">绑定密码</span>
+            <input type="text" class="pexip2">
+        </div>
+        <div class="positions" style="height:108px;">
+            <div>pexip描述:</div>
+            <textarea name="" id="add-a55" cols="30" rows="10" class="a55" style="width: 180px;
+    margin-left:2px;"></textarea>
+
+        </div>
+        <div>
+            <span class="true">确定</span>
+            <span class="cancel">取消</span>
+        </div>
+    </div>
+    <div class="form-box2">
+        <div>
+            <span class="add-bgc">所属机构</span>
+            <select name="" id="orgCreatSelect3"></select>
+        </div>
+        <div>
+            <span class="add-bgc">号码数量</span>
+            <input type="text" class="user-count">
+        </div>
+        <div>
+            <span class="add-bgc">是否连续</span>
+            <input type="radio" name="radiochoose" id="radio5" value="1" checked="checked">
+            <label for="radio5" class="label5">是</label>
+            <input type="radio" name="radiochoose" id="radio6" value="0">
+            <label for="radio6" class="label6">否</label>
+            <button class="change-code">生成号码</button>
+        </div>
+        <div class="positions">
+            <div>号码区域</div>
+            <textarea name="" id="countarea" cols="30" rows="10" disabled="disabled"></textarea>
+        </div>
+        <div>
+            <span class="add-bgc">开始时间</span>
+            <input type="text" id="datatime5">
+        </div>
+        <div>
+            <span class="add-bgc">过期时间</span>
+            <input type="text" id="datatime4">
+        </div>
+        <div style="display:none">
+            <span class="add-bgc">绑定密码</span>
+            <input type="text" class="count-password">
+        </div>
+        <div class="positions" style="height:160px;">
+            <div>pexip描述:</div>
+            <textarea name="" id="add-a66" cols="30" rows="10" class="a55"
+                      style="width: 180px;margin-left:1px;"></textarea>
+
+        </div>
+        <div style="position:relative">
+            <span class="trues">确定</span>
+            <span class="cancels">取消</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

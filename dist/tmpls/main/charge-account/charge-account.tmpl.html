@@ -1,0 +1,142 @@
+<div>
+    <div class="row margin-top-md">
+        <h4 class="col-md-2 col-md-offset-1">计费账号</h4>
+        <div class="col-md-8">
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <label>所属渠道:</label>
+                    <input class="form-control" placeholder="请输入所属渠道" ng-model="data.organname">
+                </div>
+                <div class="form-group">
+                    <label>会议室号：</label>
+                    <input class="form-control" placeholder="请输入会议室号" ng-model="data.meetingRoomNum">
+                </div>
+                <button type="submit" class="btn btn-info" ng-click="actions.search()">搜索</button>
+                <button type="submit" class="btn btn-info pull-right" ng-click="actions.increaseTime()">+增加时长</button>
+            </form>
+
+        </div>
+        <div class="col-md-2 col-md-offset-8"></div>
+    </div>
+    <div class="padding-md">
+        <table class="table table-hover text-center table-striped table-bordered">
+            <thead>
+            <tr>
+                <th style="text-align: center;">计费账号</th>
+                <th style="text-align: center;">计费方案</th>
+                <th style="text-align: center;">会议室号</th>
+                <th style="text-align: center;">所属渠道</th>
+                <th style="text-align: center;">计费类型</th>
+                <th style="text-align: center;">剩余时长</th>
+                <th style="text-align: center;">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr ng-repeat="account in data.list">
+                <td ng-bind="account.accountId"></td>
+                <td ng-bind="account.schemeName"></td>
+                <td ng-bind="account.meetingRoomNum| meetingRoomNumFilter"></td>
+                <td ng-bind="account.orgName"></td>
+                <td ng-bind="account.chargingType| chargingAccount1TypeFilter"></td>
+                <td ng-bind="account.remainTime | durationFilter"></td>
+                <td>
+                    <a href="javascript:;" ui-sref="main.account-details({
+                    accountId:account.accountId,
+                    schemeName:account.schemeName,
+                    meetingRoomNum:account.meetingRoomNum,
+                    orgName:account.orgName,
+                    chargingType:account.chargingType,
+                    remainTime:account.remainTime,
+                    page:pager.currentPage,
+                    searchMeetingRoomNum:data.meetingRoomNum,
+                    organname:data.organname
+                    })">
+                        <i class="fa fa-file-text-o"></i> 明细
+                    </a>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div style="text-align: center">
+        <ul style="margin: 0 auto" uib-pagination ng-change="pager.pageChanged()" first-text="首页" last-text="尾页"
+            next-text="下一页"
+            previous-text="上一页" total-items="pager.totalItems" ng-model="pager.currentPage" max-size="pager.maxSize"
+            class="pagination-sm"
+            boundary-links="true" force-ellipses="true" items-per-page="10"></ul>
+    </div>
+
+    <!--增加时长modal-->
+    <script type="text/ng-template" id="increase-time.html">
+        <form name="editModalForm">
+            <div class="modal-header">
+                <h3 class="modal-title" ng-bind="title">增加时长</h3>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <div class="from-group">
+                    <label>计费账号</label>
+                    <div class="input-group">
+                        <input type="text" ng-model="search.accountId" class="form-control" placeholder="请输入计费账号">
+                        <span class="input-group-btn">
+                                <button ng-click="searchByAccountId()"
+                                        class="btn btn-default" type="button">
+                                    <i class="fa fa-search fa-lg"></i>
+                                </button>
+                        </span>
+                    </div>
+                </div>
+                <hr>
+                <div style="padding:0px 50px;">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">计费方案</span>
+                            <span type="text" ng-bind="data.schemeName" class="form-control">机构付费</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">会议室号</span>
+                            <span type="text" ng-bind="data.meetingRoomNum" class="form-control">700015</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">所属渠道</span>
+                            <span type="text" ng-bind="data.orgName" class="form-control">冬奥会</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">剩余时长</span>
+                            <span type="text" ng-bind="data.remainTime|durationFilter"
+                                  class="form-control">4000分钟</span>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <label>增加时长</label>
+
+                    <div class="input-group">
+                        <input type="number" min="1" class="form-control" placeholder="请输入时长" ng-model="increase.increase" required>
+                        <span class="input-group-addon">分钟</span>
+
+                    </div>
+                </div>
+                <div class="form-group" ng-if="data.chargingType == '1'">
+                    <label class="">有效期(单位: 天)</label>
+                    <div class="row" style="display: flex; align-items: center;">
+                        <input style="width: 65%; margin-right: 20px;" min="0" type="number" class="form-control" placeholder="请输入有效期" ng-model="increase.validPeriod" required>
+                        <span>注：0为永久有效</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-info" type="button" ng-click="increase()">完成</button>
+                <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+            </div>
+        </form>
+    </script>
+</div>

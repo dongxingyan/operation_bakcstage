@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>会议室管理</title>
+    <link rel="stylesheet" href="css/index2.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vars.js"></script>
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/comment.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-slide.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-timepicker-addon.js"></script>
+    <script src="js/meetingroomManagement.js"></script>
+
+    <style>
+        .ui-timepicker-div dl dt {
+            height: 25px;
+            margin-bottom: -25px;
+        }
+        
+        .ui_tpicker_time_label {
+            padding-left: 20px;
+        }
+        
+        .ui-timepicker-div dl dd {
+            margin: 0 10px 10px 65px;
+        }
+        
+        .ztree li span.button.ico_docu {
+            background: url(image/personal.png) no-repeat 0px 0px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="head">
+        <div class="head-content">
+            <h1 class="left"><img src="image/logo.png" alt=""></h1>
+        </div>
+    </div>
+    <div class="box">
+        <div class="box-left">
+            <a href="javascript:void(0)" class="a1">
+                <div>
+                    <img src="image/page01.png" alt=""> 状态总览
+                    <span>
+				</span>
+                </div>
+            </a>
+            <a href="javascript:void(0)" class="a2">
+                <div>
+                    <img src="image/page02.png" alt=""> 机构管理
+                    <span></span></div>
+            </a>
+            <a href="javascript:void(0)" class="a3">
+                <div>
+                    <img src="image/page03.png" alt=""> 会议室管理
+                    <span class="show" style="display:block"></span></div>
+            </a>
+            <a href="javascript:void(0)" class="a4">
+                <div>
+                    <img src="image/page04.png" alt=""> 用户账号
+                    <span></span></div>
+            </a>
+            <a href="javascript:void(0)" class="a-end">
+                <div class="charge-plan">
+                    <img src="image/charge-plan.png" alt=""> 计费方案
+                    <span></span>
+                </div>
+                <div class="charge-combo">
+                    <img src="image/charge-combo.png" alt=""> 计费套餐
+                    <span></span>
+                </div>
+                <div class="charge-account">
+                    <img src="image/charge-account.png" alt=""> 计费账号
+                    <span></span>
+                </div>
+                <div class="count">
+                    <img src="image/charge-account.png" alt="">
+                    统计<span></span>
+                </div>
+                <div class="use-count hide">
+                    使用统计<span></span>
+                </div>
+                <div class="live-count hide">
+                    直播统计<span></span>
+                </div>
+                <div class="statistics-concurrent">
+                    <img src="image/charge-account.png" alt="">
+                    并发信息 <span></span>
+                </div>
+            </a>
+            <a href="javascript:void(0)" class="a5">
+                <div>
+                    <img src="image/page05.png" alt=""> 设备账号
+                    <span></span></div>
+            </a>
+            <a href="javascript:void(0)" class="a7">
+                <div>
+                    <img src="image/page07.png" alt=""> 退出
+                    <span></span></div>
+            </a>
+        </div>
+        <div class="box-right">
+            <div class="right-title">
+                <div class="title-left">
+                    <span>会议室管理</span>
+                    <a href="./new/index.html#!/main/meeting-room/0/">新版</a>
+                    </div>
+                <div class="title-right">
+                    <span>会议室名</span>
+                    <input type="text" id="conferrenceName" style=" height: 26px;margin-right: 40px;line-height: 26px;width: 100px;">
+
+                    <span class="title1">会议室号</span>
+                    <input type="text" class="title2">
+
+                    <span class="title3">所属机构</span>
+                    <select name="" id="orgSelect" class="title4">
+                    <option value="">无</option>
+
+                </select>
+                    <span class="title5">&nbsp</span>
+                    <span class="title6">&nbsp</span>
+                </div>
+            </div>
+            <div class="user-content">
+                <div class="content-box">
+                    <div class="ceshi">
+                        <ul class="li-head-meetingroom">
+                            <li style="width:390px;">会议室名</li>
+                            <li style="width:92px;">会议室号</li>
+                            <li style="width:89px;">限制人数</li>
+                            <li style="width:430px;">所属机构</li>
+                            <li style="width:116px;">截止日期</li>
+                            <li style="width:112px;">操作</li>
+                        </ul>
+                    </div>
+                    <div class="content-boxes" id="contentBox">
+                    </div>
+                    <div class="pages">
+                        <span>第<span class="current-page"></span>页/</span>
+                        <span>共<span class="page-count"></span>页,</span>
+                        <span>共<span class="content-totals"></span>条</span>
+                        <span id="firstPage">首页</span>
+                        <span id="prev">上一页</span>
+                        <span id="next">下一页</span>
+                        <span id="lastPage">尾页</span>
+                        <input type="text" class="page-num">
+                        <span id="page-jump">跳转</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bcgs"></div>
+    <!--新建会议室-->
+    <div class="meetingroom-form" style="height:810px;width:500px;margin-top:-320px">
+        <div class="editors">
+            <span class="editor-left">新建会议室</span>
+            <span class="editor-right">批量创建</span>
+        </div>
+        <!--新建会议室-新建会议室-->
+        <div class="form-box">
+            <div>
+                <span class="add-bgc">所属机构:</span>
+                <select  data-select-org name="" id="orgCreatSelect"></select>
+            </div>
+            <div id="creatRadio1">
+                <span class="checkbox" style="width:100px;">号码段:</span>
+                <input type="radio" class="meetingroomradio" name="radiochooseCreat1" value="0" id="radio7" checked="true">
+                <label for="radio7" class="label7" style="width:94px;">710000之前</label>
+                <input type="radio" name="radiochooseCreat1" class="meetingroomradio" value="1" id="radio8">
+                <label for="radio8" class="label8" style="width:94px" ;>710000之后</label>
+            </div>
+            <div>
+                <span class="add-bgc">会议室名:</span>
+                <input type="text" id="creatRoomName" placeholder="请输入会议室名称">
+            </div>
+            <div>
+                <span class="add-bgc">会议室号:</span>
+                <input type="text" id="creatRoomNum" placeholder="请输入会议室号码">
+            </div>
+            <div>
+                <span class="add-bgc">限制人数:</span>
+                <input type="text" id="creatCap">
+            </div>
+            <div>
+                <span class="add-bgc">开始日期:</span>
+                <input type="text" id="creatExpDate1" placeholder="点击获取开始日期">
+            </div>
+            <div>
+                <span class="add-bgc">截止日期:</span>
+                <input type="text" id="creatExpDate" placeholder="点击获取截止日期">
+            </div>
+            <div>
+                <span class="add-bgc">会议模式:</span>
+                <select name="" id="meeting-room">
+                <option value="one_main_zero_pips">全屏主要发言者（单个语音切换布局）</option>
+                <option value="one_main_seven_pips" selected="selected">较大的主要发言者和最多 7 位其他与会者(1 + 7 布局)</option>
+                <option value="one_main_twentyone_pips">较小的主要发言者和最多 21 位其他与会者(1 + 21 布局)</option>
+            </select>
+            </div>
+            <div>
+                <span class="add-bgc">会议主题:</span>
+                <select id="theme"></select>
+            </div>
+            <div>
+                <span>主持人密码:</span>
+                <input type="text" id="creatHostPwd" placeholder="请输入主持人密码">
+            </div>
+            <div style="position:relative;width:600px;">
+                <span>参会者密码:</span>
+                <input type="text" id="creatGuestPwd" placeholder="请输入参会者密码">
+                <input type="radio" style="display:none;" name="isAutoChange_create" value="1" id="radio_isAutoChangeYes" checked="checked">
+                <label for="radio_isAutoChangeYes" style="width:80px" class="label3">自动变化</label>
+                <input type="radio" style="display:none;" name="isAutoChange_create" value="0" id="radio_isAutoChangeNo">
+                <label for="radio_isAutoChangeNo" style="width:120px" class="label4">指定密码</label>
+            </div>
+            <div id="creatRadio">
+                <span class="checkbox">允许参会者加入:</span>
+                <input type="radio" name="radiochooseCreat" value="yes" id="radio3" checked="checked">
+                <label for="radio3" class="label3">是</label>
+                <input type="radio" name="radiochooseCreat" value="no" id="radio4">
+                <label for="radio4" class="label4">否</label>
+            </div>
+            <div class="positions" style="height:160px;">
+                <div>pexip描述:</div>
+                <textarea name="" id="add-a55" cols="30" rows="10" class="a55" style="width: 180px;margin-left:1px;"></textarea>
+
+            </div>
+            <span id="creatOK" class="true">确定</span>
+            <span id="creatCancel" class="cancel">取消</span>
+        </div>
+        <!--新建会议室-新建会议室-End-->
+
+        <!--新建会议室-批量创建-->
+        <div class="form-box2" style="display: none;">
+            <div>
+                <span class="add-bgc">所属机构</span>
+                <select  data-select-org name="" id="creatsOrgSelect"></select>
+            </div>
+            <div>
+                <span class="add-bgc">号码数量</span>
+                <input id="countRoomNum" type="text">
+            </div>
+            <div id="creatRadio3">
+                <span class="checkbox" style="width:100px;">号码段:</span>
+                <input type="radio" name="radiochooseCreat2" value="0" id="radio9" checked="checked">
+                <label for="radio9" class="label9" style="width:94px;">710000之前</label>
+                <input type="radio" name="radiochooseCreat2" value="1" id="radio10">
+                <label for="radio10" class="label10" style="width:94px" ;>710000之后</label>
+            </div>
+            <div>
+                <span class="add-bgc">是否连续</span>
+                <input type="radio" name="radiochooseNum" value="yes" id="radio5">
+                <label for="radio5" class="label5">是</label>
+                <input type="radio" name="radiochooseNum" value="no" id="radio6" checked="checked">
+                <label for="radio6" class="label6">否</label>
+                <button class="change-code">生成号码</button>
+            </div>
+            <div class="positions">
+                <div>号码区域</div>
+                <textarea name="" id="numTextArea" cols="35" rows="10"></textarea>
+            </div>
+            <div>
+                <span class="add-bgc">限制人数</span>
+                <input type="text" id="creatsCap">
+            </div>
+            <div>
+                <span class="add-bgc">开始日期</span>
+                <input type="text" id="creatsExpDate3">
+            </div>
+            <div>
+                <span class="add-bgc">截止日期</span>
+                <input type="text" id="creatsExpDate">
+            </div>
+            <div>
+                <span class="add-bgc">会议模式:</span>
+                <select name="" id="meeting-room">
+                <option value="one_main_zero_pips">全屏主要发言者（单个语音切换布局）</option>
+                <option value="one_main_seven_pips" selected="selected">较大的主要发言者和最多 7 位其他与会者(1 + 7 布局)</option>
+                <option value="one_main_twentyone_pips">较小的主要发言者和最多 21 位其他与会者(1 + 21 布局)</option>
+            </select>
+            </div>
+            <div>
+                <span class="add-bgc">会议主题:</span>
+                <select id="theme1"></select>
+            </div>
+            <div>
+                <span>主持人密码</span>
+                <input type="text" id="creatsHostPwd">
+            </div>
+            <div class="auto-update-password-container" style="position:relative;width:600px;">
+                <span>参会者密码:</span>
+                <input type="text" id="creatsGuestPwd" placeholder="请输入参会者密码">
+                <input type="radio" style="display:none;" name="isAutoChangeMulti" value="1" id="radio_isAutoChangeYesMulti" checked="checked">
+                <label for="radio_isAutoChangeYesMulti" style="width:80px" class="label3">自动变化</label>
+                <input type="radio" style="display:none;" name="isAutoChangeMulti" value="0" id="radio_isAutoChangeNoMulti">
+                <label for="radio_isAutoChangeNoMulti" style="width:120px" class="label4">指定密码</label>
+            </div>
+            <div>
+                <span class="checkbox">允许参会者加入:</span>
+                <input type="radio" name="radiochoose" value="yes" id="radio1" checked="checked">
+                <label for="radio1" class="label1">是</label>
+                <input type="radio" name="radiochoose" value="no" id="radio2">
+                <label for="radio2" class="label2">否</label>
+            </div>
+            <div class="positions" style="height:160px;">
+                <div>pexip描述:</div>
+                <textarea name="" id="add-a66" cols="30" rows="10" class="a55" style="width: 180px;margin-left:1px;"></textarea>
+
+            </div>
+            <span id="creatsOK" class="trues">确定</span>
+            <span id="creatsCancel" class="cancels">取消</span>
+        </div>
+        <!--新建会议室-批量创建=End-->
+    </div>
+    <!--新建会议室-End-->
+
+    <!--编辑会议室-->
+    <div class="editor-form" style="height:680px;width:500px;margin-top:-220px">
+        <div class="editors2">
+            编辑会议室
+        </div>
+        <div class="form-box">
+            <div>
+                <span class="add-bgc">所属机构:</span>
+                <select data-select-org name="" id="updateOrgSelect" style="height:30px;line-height:30px;"></select>
+            </div>
+            <div>
+                <span class="add-bgc">会议室名:</span>
+                <input id="updateRoomName" type="text" placeholder="请输入会议室名称">
+            </div>
+            <div>
+                <span class="add-bgc">会议室号:</span>
+                <input id="updateRoomNum" type="text" placeholder="请输入会议室号码">
+            </div>
+            <div>
+                <span class="add-bgc">限制人数:</span>
+                <input id="updateCap" type="text">
+            </div>
+            <div>
+                <span class="add-bgc">截止日期:</span>
+                <input id="updateDate" type="text">
+            </div>
+            <div>
+                <span class="add-bgc">会议模式:</span>
+                <select name="" id="meeting-room1">
+                <option value="one_main_zero_pips">全屏主要发言者（单个语音切换布局）</option>
+                <option value="one_main_seven_pips">较大的主要发言者和最多 7 位其他与会者(1 + 7 布局)</option>
+                <option value="one_main_twentyone_pips">较小的主要发言者和最多 21 位其他与会者(1 + 21 布局)</option>
+            </select>
+            </div>
+            <div>
+                <span class="add-bgc">会议主题:</span>
+                <select id="theme3"></select>
+            </div>
+            <div>
+                <span>主持人密码:</span>
+                <input id="updateHostPwd" type="text" placeholder="请输入主持人密码">
+            </div>
+            <div  class="auto-update-password-container" style="position:relative;width:600px">
+                <span>参会者密码:</span>
+                <input id="updateGuestPwd" type="text" placeholder="请输入参会者密码">
+                <input type="radio" style="display:none;" name="isAutoChangeEdit" value="1" id="radio_isAutoChangeYesEdit" checked="checked">
+                <label for="radio_isAutoChangeYesEdit" style="width:80px" class="label3">自动变化</label>
+                <input type="radio" style="display:none;" name="isAutoChangeEdit" value="0" id="radio_isAutoChangeNoEdit">
+                <label for="radio_isAutoChangeNoEdit" style="width:120px" class="label4">指定密码</label>
+            </div>
+            <div id="updateRadio">
+                <span class="checkbox">允许参会者加入:</span>
+                <input type="radio" name="radiochooseUp" value="yes" id="radio-edit-join-yes" checked="checked">
+                <label for="radio-edit-join-yes" class="label3">是</label>
+                <input type="radio" name="radiochooseUp" value="no" id="radio-edit-join-no">
+                <label for="radio-edit-join-no" class="label4">否</label>
+            </div>
+            <div class="positions" style="height:160px;">
+                <div>pexip描述:</div>
+                <textarea name="" id="add-a88" cols="30" rows="10" class="a55" style="width: 180px;margin-left:1px;"></textarea>
+
+            </div>
+            <span id="updateOk" class="true">确定</span>
+            <span id="updateCancel" class="cancel">取消</span>
+        </div>
+    </div>
+    <!--编辑会议室-End-->
+
+    <div class="other-name">
+        <div class="other-head">
+
+        </div>
+        <div class="other-box">
+            <div class="other-heads">
+                <div class="other-left">别名</div>
+                <div class="other-right">操作</div>
+            </div>
+        </div>
+        <div class="othername-input">
+            <span>别名：</span>
+            <input type="text">
+        </div>
+        <div class="othername-input" style="height:170px;">
+            <div>描述：</div>
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <span class="tianjia" id="addAlias">添加</span>
+            <span class="tianjia" id="updataAlias" style="display: none;">修改</span>
+            <span class="cancels1">取消</span>
+        </div>
+    </div>
+    <div class="bcgs" id="bcgs1"></div>
+    <div class="bcgs" id="bcgs2"></div>
+    <div class="alerts">
+        <div class="alert-head">
+            温馨提示
+            <img src="image/alertshanchu.png" alt="" class="img-right">
+            <img src="image/zhuyi.png" alt="" class="img-left">
+        </div>
+        <div class="alert-content"></div>
+        <div class="alert-bottom">
+            <span class="alert-sure">确定</span>
+        </div>
+    </div>
+    <div class="alerts-delet">
+        <div class="alert-head">
+            温馨提示
+            <img src="image/alertshanchu.png" alt="" class="delet-right">
+            <img src="image/zhuyi.png" alt="" class="img-left">
+        </div>
+        <div class="alert-content">确定删除吗？</div>
+        <div class="alert-bottom">
+            <div class="span-total">
+                <span class="delet-sure">确定</span>
+                <span class="delet-cancel">取消</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

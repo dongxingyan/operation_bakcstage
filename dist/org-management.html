@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>机构管理</title>
+    <link rel="stylesheet" href="css/index2.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vars.js"></script>
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/comment.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-slide.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-timepicker-addon.js"></script>
+    <script src="js/orgmanagement.js"></script>
+</head>
+<style>
+    .ui-timepicker-div dl dt {
+        height: 25px;
+        margin-bottom: -25px;
+    }
+    
+    .ui_tpicker_time_label {
+        padding-left: 20px;
+    }
+    
+    .ui-timepicker-div dl dd {
+        margin: 0 10px 10px 65px;
+    }
+    
+    .ztree li span.button.ico_docu {
+        background: url(image/personal.png) no-repeat 0px 0px;
+    }
+</style>
+
+<body>
+    <div class="head">
+        <div class="head-content">
+            <h1 class="left"><img src="image/logo.png" alt=""></h1>
+        </div>
+    </div>
+    <div class="box">
+        <div class="box-left">
+            <a href="javascript:void(0)" class="a1">
+                <div>
+                    <img src="image/page01.png" alt=""> 状态总览
+                    <span>
+				</span>
+                </div>
+            </a>
+            <a href="javascript:void(0)" class="a2">
+                <div>
+                    <img src="image/page02.png" alt=""> 机构管理
+                    <span class="show" style="display:block"></span></div>
+            </a>
+            <a href="javascript:void(0)" class="a3">
+                <div>
+                    <img src="image/page03.png" alt=""> 会议室管理
+                    <span></span></div>
+            </a>
+            <a href="javascript:void(0)" class="a4">
+                <div>
+                    <img src="image/page04.png" alt=""> 用户账号
+                    <span></span></div>
+            </a>
+            <a href="javascript:void(0)" class="a-end">
+                <div class="charge-plan">
+                    <img src="image/charge-plan.png" alt=""> 计费方案
+                    <span></span>
+                </div>
+                <div class="charge-combo">
+                    <img src="image/charge-combo.png" alt=""> 计费套餐
+                    <span></span>
+                </div>
+                <div class="charge-account">
+                    <img src="image/charge-account.png" alt=""> 计费账号
+                    <span></span>
+                </div>
+                <div class="count">
+                    <img src="image/charge-account.png" alt="">
+                    统计<span></span>
+                </div>
+                <div class="use-count hide">
+                    使用统计<span></span>
+                </div>
+                <div class="live-count hide">
+                    直播统计<span></span>
+                </div>
+                <div class="statistics-concurrent">
+                    <img src="image/charge-account.png" alt=""> 并发信息
+                    <span></span>
+                </div>
+            </a>
+            <a href="javascript:void(0)" class="a5">
+                <div>
+                    <img src="image/page05.png" alt=""> 设备账号
+                    <span></span></div>
+            </a>
+            <a href="javascript:void(0)" class="a7">
+                <div>
+                    <img src="image/page07.png" alt=""> 退出
+                    <span></span></div>
+            </a>
+        </div>
+        <div class="box-right">
+            <div class="right-title">
+                <div class="title-left">机构管理</div>
+                <div class="title-right">
+                    <span class="title1">机构名称</span>
+                    <input type="text" id="orgSelect">
+                    <span class="title5">&nbsp</span>
+                    <span class="title7">&nbsp</span>
+                </div>
+            </div>
+            <div class="user-content">
+                <div class="content-box">
+                    <div class="ceshi">
+                        <ul class="li-head-org">
+                            <li style="width:680px;text-indent:30px;">机构名称</li>
+                            <li style="width:150px">计费方案</li>
+                            <li style="width:158px">管理员账号</li>
+                            <li style="width:152px">密码</li>
+                            <!-- <li style="width:116px">截止日期</li> -->
+                            <li style="width:88px">操作</li>
+                        </ul>
+                    </div>
+                    <div class="content-boxes" id="contentBox">
+                        <ul class="li-head-orgs">
+                            <li class="org-name">鹏云视讯</li>
+                            <li class="plan-list">机构付费</li>
+                            <li class="org-id">65456422</li>
+                            <li class="org-password">111</li>
+                            <li class="org-time">2016-04-01</li>
+                            <li class="description1">
+                                <img src="image/description2.png" alt="" class="org-editor">
+                                <img src="image/description3.png" alt="" class="org-delete">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pages">
+                        <span>第<span class="current-page"></span>页/</span>
+                        <span>共<span class="page-count"></span>页,</span>
+                        <span>共<span class="content-totals"></span>条</span>
+                        <span id="firstPage">首页</span>
+                        <span id="prev">上一页</span>
+                        <span id="next">下一页</span>
+                        <span id="lastPage">尾页</span>
+                        <input type="text" class="page-num">
+                        <span id="page-jump">跳转</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bcgs"></div>
+    <!--模态框-新建机构-->
+    <div class="add-org" style="display:none;height:640px;">
+        <div class="editors2">
+            新建机构
+        </div>
+        <div class="form-box">
+            <div>
+                <span class="add-bgc">机构名称:</span>
+                <input type="text" placeholder="请输入机构名称" class="a11" id="add-a11">
+            </div>
+            <div>
+                <span class="add-bgc">管理员账号：</span>
+                <input type="text" placeholder="请输入管理员账号" class="a22" id="add-a22">
+            </div>
+            <div>
+                <span class="add-bgc">管理员密码:</span>
+                <input type="text" placeholder="请输入管理员密码" class="a33" id="add-a33">
+            </div>
+            <div>
+                <span class="add-bgc" style="width:120px;">计费方案:</span>
+                <select name="" id="a44" class="plan-list">
+            </select>
+            </div>
+            <div id="creatRadio1">
+                <span class="checkbox" style="width:120px;">是否支持录制:</span>
+                <input type="radio" class="meetingroomradio" name="radiochooseCreat1" value="1" id="radios1" checked="true">
+                <label for="radios1" class="labels1" style="width:94px;">是</label>
+                <input type="radio" name="radiochooseCreat1" class="meetingroomradio" value="0" id="radios2">
+                <label for="radios2" class="labels2" style="width:94px" ;>否</label>
+            </div>
+            <div id="creatRadio2">
+                <span class="checkbox" style="width:120px;">是否支持直播:</span>
+                <input type="radio" class="meetingroomradio" name="radiochooseCreat2" value="1" id="radios3" checked="true">
+                <label for="radios3" class="labels3" style="width:94px;">是</label>
+                <input type="radio" name="radiochooseCreat2" class="meetingroomradio" value="0" id="radios4">
+                <label for="radios4" class="labels4" style="width:94px" ;>否</label>
+            </div>
+            <div>
+                <span>同时直播频道数:</span>
+                <input type="text" class="a33" id="live-counts">
+            </div>
+            <div>
+                <span>最高并发数:</span>
+                <input id="maxSimultaneousCreate" type="text" style="float:left;" class="a33"><span>(0为不限制)</span>
+            </div>
+            <div>
+                <span style="margin-left:-40px;width:160px;">会议结束变更密码:</span>
+                <input type="radio" checked='true' id="changepassYes" style="display:none" name="changePasswordAfterMeeting" value="1">
+                <label for="changepassYes" class="labels4" style="width:94px">是</label>
+                <input type="radio" id="changepassNo" style="display:none" name="changePasswordAfterMeeting" value="0">
+                <label for="changepassNo" class="labels4">否</label>
+            </div>
+            <div style="display:none">
+                <span class="add-bgc">截止日期:</span>
+                <input type="text" class="a44" id="datatime1" placeholder="点击获取截止日期">
+            </div>
+            <div class="positions" style="height:236px;">
+                <div>机构描述:</div>
+                <div style="width:auto;height:150px;">
+                    <textarea name="" id="add-a55" cols="30" rows="10" class="a55"></textarea>
+                </div>
+                <div style="clear:both;width:auto;">
+                    <span style="display:block;float:left" class="true">确定</span>
+                    <span style="display:block;float:left" class="cancel">取消</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--模态框-新建机构-end-->
+
+    <!--模态框-编辑-->
+    <div class="editor-org" style="height:640px;">
+        <div class="editors2">
+            编辑机构
+        </div>
+        <div class="form-box">
+            <div>
+                <span class="add-bgc">机构名称:</span>
+                <input type="text" class="a11" id="org-a11">
+            </div>
+            <div>
+                <span class="add-bgc">管理员账号：</span>
+                <input type="text" class="a22" id="org-a22">
+            </div>
+            <div>
+                <span class="add-bgc">管理员密码:</span>
+                <input type="text" class="a33" id="org-a33">
+            </div>
+            <div>
+                <span class="add-bgc" style="width:120px;">计费方案:</span>
+                <select name="" id="a44" class="plan-list">
+            </select>
+            </div>
+            <div id="creatRadio3">
+                <span class="checkbox" style="width:120px;">是否支持录制:</span>
+                <input type="radio" class="meetingroomradio" name="radiochooseCreat3" value="1" id="radios5" checked="true">
+                <label for="radios5" class="labels5" style="width:94px;">是</label>
+                <input type="radio" name="radiochooseCreat3" class="meetingroomradio" value="0" id="radios6">
+                <label for="radios6" class="labels6" style="width:94px" ;>否</label>
+            </div>
+            <div id="creatRadio4">
+                <span class="checkbox" style="width:120px;">是否支持直播:</span>
+                <input type="radio" class="meetingroomradio" name="radiochooseCreat4" value="1" id="radios7" checked="true">
+                <label for="radios7" class="labels7" style="width:94px;">是</label>
+                <input type="radio" name="radiochooseCreat4" class="meetingroomradio" value="0" id="radios8">
+                <label for="radios8" class="labels8" style="width:94px" ;>否</label>
+            </div>
+            <div>
+                <span>同时直播频道数:</span>
+                <input type="text" id="live-counts1">
+            </div>
+            <div>
+                <span>最高并发数:</span>
+                <input id="maxSimultaneous_edit" type="text" style="float:left;"><span>(0为不限制)</span>
+            </div>
+            <div>
+                <span style="margin-left:-40px;width:160px;">会议结束变更密码:</span>
+                <input type="radio" id="changepass-yes-edit" style="display:none" name="changePasswordAfterMeeting_edit" value="1">
+                <label for="changepass-yes-edit" class="labels4" style="width:94px">是</label>
+                <input type="radio" id="changepass-no-edit" style="display:none" name="changePasswordAfterMeeting_edit" value="0">
+                <label for="changepass-no-edit" class="labels4">否</label>
+            </div>
+            <div style="display:none">
+                <span class="add-bgc">截止日期:</span>
+                <input type="text" class="a44" id="datatime2">
+            </div>
+            <div class="positions" style="height:236px;">
+                <div>机构描述:</div>
+                <div style="width:auto;height:150px;">
+                    <textarea name="" id="org-a55" cols="30" rows="10" class="a55"></textarea>
+                </div>
+                <div style="clear:both;width:auto;">
+                    <span class="trues" style="text-align:center;text-indent:0px">确定</span>
+                    <span class="cancel">取消</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--模态框-编辑-end-->
+
+
+    <div class="page">
+        <div class="alert-head">
+            温馨提示
+            <img src="image/alertshanchu.png" alt="" class="page-right">
+            <img src="image/zhuyi.png" alt="" class="img-left">
+        </div>
+        <div class="alert-content"></div>
+        <div class="alert-bottom">
+            <span class="page-sure">确定</span>
+        </div>
+    </div>
+    <div class="alerts-delet">
+        <div class="alert-head">
+            温馨提示
+            <img src="image/alertshanchu.png" alt="" class="delet-right">
+            <img src="image/zhuyi.png" alt="" class="img-left">
+        </div>
+        <div class="alert-content">确定删除吗？</div>
+        <div class="alert-bottom">
+            <div class="span-total">
+                <span class="delet-sure">确定</span>
+                <span class="delet-cancel">取消</span>
+            </div>
+        </div>
+    </div>
+    <div class="alerts">
+        <div class="alert-head">
+            温馨提示
+            <img src="image/alertshanchu.png" alt="" class="img-right">
+            <img src="image/zhuyi.png" alt="" class="img-left">
+        </div>
+        <div class="alert-content"></div>
+        <div class="alert-bottom">
+            <span class="alert-sure">确定</span>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+[1222/140526:ERROR:tcp_listen_socket.cc(76)] Could not bind socket to 127.0.0.1:6004
+[1222/140526:ERROR:node_debugger.cc(86)] Cannot start debugger server
+[1222/163623:ERROR:tcp_listen_socket.cc(76)] Could not bind socket to 127.0.0.1:6004
+[1222/163623:ERROR:node_debugger.cc(86)] Cannot start debugger server
+[1222/172559:ERROR:tcp_listen_socket.cc(76)] Could not bind socket to 127.0.0.1:6004
+[1222/172559:ERROR:node_debugger.cc(86)] Cannot start debugger server
+[0421/135807.774:ERROR:exception_handler_server.cc(524)] ConnectNamedPipe: 管道正在被关闭。 (0xE8)
+[0425/140214.879:ERROR:exception_handler_server.cc(524)] ConnectNamedPipe: 管道正在被关闭。 (0xE8)
+[0425/140950.191:ERROR:exception_handler_server.cc(524)] ConnectNamedPipe: 管道正在被关闭。 (0xE8)
+[0425/153651.653:ERROR:exception_handler_server.cc(524)] ConnectNamedPipe: 管道正在被关闭。 (0xE8)

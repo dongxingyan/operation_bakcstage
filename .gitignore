@@ -1,0 +1,4 @@
+node_modules
+.idea
+dist/js/var.js
+app/libs/

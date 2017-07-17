@@ -1,0 +1,33 @@
+.btn-selected {
+    background: #4c99a9 !important;
+}
+.hide {
+    display: none;
+}
+.warn-info-tip-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 9999;
+    background: rgba(0,0,0, 0.1);
+}
+.warn-type-container {
+    width: 315px;
+    height: 72px;
+    background: #ffffff;
+    top: 40%;
+    left: 40%;
+    right: 50%;
+    bottom: 50%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    border-radius: 3px;
+}
+.warn-type-container img {
+    margin-right: 14px;
+}
